@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import QRCode from "react-qr-code";
 import * as Popover from "@radix-ui/react-popover";
 
 import { copyTextToSystemClipboard } from "../../packages/excalidraw/clipboard";
@@ -101,60 +100,51 @@ export const RoomModal = ({
         <h3 className="RoomDialog__active__header">
           {t("labels.liveCollaboration")}
         </h3>
-
+        <TextField
+          value={username}
+          placeholder={t("labels.yourName")}
+          label={t("labels.yourName")}
+          onChange={onUsernameChange}
+          onKeyDown={(event) => event.key === KEYS.ENTER && handleClose()}
+        />
         <div className="RoomDialog__active__linkRow">
-          <div className="RoomDialog__active__action">
-            <TextField
-              value={username}
-              placeholder={t("labels.yourName")}
-              label={t("labels.yourName")}
-              onChange={onUsernameChange}
-              onKeyDown={(event) => event.key === KEYS.ENTER && handleClose()}
-            />
-            <TextField
-              ref={ref}
-              label={t("labels.link.label")}
-              readonly
-              fullWidth
-              value={activeRoomLink}
-            />
-            <div className="RoomDialog__active__buttons">
-              <Popover.Root open={justCopied}>
-                <Popover.Trigger asChild>
-                  <FilledButton
-                    size="large"
-                    label={t("labels.link.copy")}
-                    startIcon={copyIcon}
-                    onClick={copyRoomLink}
-                  />
-                </Popover.Trigger>
-                <Popover.Content
-                  onOpenAutoFocus={(event) => event.preventDefault()}
-                  onCloseAutoFocus={(event) => event.preventDefault()}
-                  className="RoomDialog__popover"
-                  side="top"
-                  align="end"
-                  sideOffset={5.5}
-                >
-                  {tablerCheckIcon} copied
-                </Popover.Content>
-              </Popover.Root>
-              {isShareSupported && (
-                <FilledButton
-                  size="large"
-                  variant="icon"
-                  label="Share"
-                  startIcon={getShareIcon()}
-                  className="RoomDialog__active__share"
-                  onClick={shareRoomLink}
-                />
-              )}
-            </div>
-          </div>
-          <QRCode
-            className="RoomDialog__active__qrcode"
+          <TextField
+            ref={ref}
+            label={t("labels.link.label")}
+            readonly
+            fullWidth
             value={activeRoomLink}
           />
+          {isShareSupported && (
+            <FilledButton
+              size="large"
+              variant="icon"
+              label="Share"
+              startIcon={getShareIcon()}
+              className="RoomDialog__active__share"
+              onClick={shareRoomLink}
+            />
+          )}
+          <Popover.Root open={justCopied}>
+            <Popover.Trigger asChild>
+              <FilledButton
+                size="large"
+                label={t("labels.link.copy")}
+                startIcon={copyIcon}
+                onClick={copyRoomLink}
+              />
+            </Popover.Trigger>
+            <Popover.Content
+              onOpenAutoFocus={(event) => event.preventDefault()}
+              onCloseAutoFocus={(event) => event.preventDefault()}
+              className="RoomDialog__popover"
+              side="top"
+              align="end"
+              sideOffset={5.5}
+            >
+              {tablerCheckIcon} copied
+            </Popover.Content>
+          </Popover.Root>
         </div>
         <div className="RoomDialog__active__description">
           <p>
