@@ -120,7 +120,8 @@
       "createEmbed": "创建链接与嵌入",
       "label": "链接",
       "labelEmbed": "链接与嵌入",
-      "empty": "未设定链接"
+      "empty": "未设定链接",
+      "copy": "复制链接"
     },
     "lineEditor": {
       "edit": "编辑线条",

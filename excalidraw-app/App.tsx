@@ -75,7 +75,7 @@ import {
   restoreAppState,
   RestoredDataState,
 } from "../packages/excalidraw/data/restore";
-import { exportToExcalidrawPlus } from "./components/ExportToExcalidrawPlus";
+// import { exportToExcalidrawPlus } from "./components/ExportToExcalidrawPlus";
 import { updateStaleImageStatuses } from "./data/FileManager";
 import { newElementWith } from "../packages/excalidraw/element/mutateElement";
 import { isInitializedImageElement } from "../packages/excalidraw/element/typeChecks";
@@ -734,7 +734,7 @@ const ExcalidrawWrapper = () => {
         <OverwriteConfirmDialog>
           <OverwriteConfirmDialog.Actions.ExportToImage />
           <OverwriteConfirmDialog.Actions.SaveToDisk />
-          {excalidrawAPI && (
+          {/* {excalidrawAPI && (
             <OverwriteConfirmDialog.Action
               title={t("overwriteConfirm.action.excalidrawPlus.title")}
               actionLabel={t("overwriteConfirm.action.excalidrawPlus.button")}
@@ -748,7 +748,7 @@ const ExcalidrawWrapper = () => {
             >
               {t("overwriteConfirm.action.excalidrawPlus.description")}
             </OverwriteConfirmDialog.Action>
-          )}
+          )} */}
         </OverwriteConfirmDialog>
         <AppFooter />
         <TTDDialog
